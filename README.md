@@ -73,4 +73,7 @@ Acknowledgments
   •	Email functionalities using gmail smtp and imap functionalities.
 	•	MCP server functionalities provided via Fastmcp.
 
+---
+
+This README gives a comprehensive introduction, setup instructions, and an overview of the project's capabilities, perfect for a GitHub repository.
        

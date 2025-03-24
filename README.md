@@ -1,7 +1,7 @@
 # MCP-compatible-Agentic-discord-bot
 Agentic Retrieval-Augmented Generation (RAG) system built with LangChain, Chroma, and multi-MCP tools for intelligent email and web scraping integration.
 
-
+![Project Screenshot](./assets/discord_mcp_flow.jpeg)
 
 # Agentic RAG with Multi-MCP Tools
 

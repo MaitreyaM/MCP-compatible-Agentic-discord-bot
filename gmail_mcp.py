@@ -4,7 +4,7 @@ import sys
 import time
 import signal
 import smtplib
-import requests  # For downloading attachments via URL
+import requests  
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
@@ -17,16 +17,16 @@ import asyncio
 import datetime as dt
 from threading import Thread
 
-# Load environment variables
+
 load_dotenv()
 
-# Gmail SMTP Configuration
+
 SMTP_HOST = "smtp.gmail.com"
 SMTP_PORT = 587
 SMTP_USERNAME = os.getenv("SMTP_USERNAME")
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 
-# Store for scheduled emails
+
 scheduled_emails = []
 
 def signal_handler(sig, frame):
@@ -35,13 +35,13 @@ def signal_handler(sig, frame):
 
 signal.signal(signal.SIGINT, signal_handler)
 
-# Create FastMCP instance
+
 mcp = FastMCP("gmail-mcp")
 
-# Configure the server to use port 8000 instead of the default
+
 mcp.settings.port = 8000
 
-# Print credentials availability for debugging (without exposing actual values)
+
 print(f"[INIT].... → SMTP_USERNAME available: {SMTP_USERNAME is not None}")
 print(f"[INIT].... → SMTP_PASSWORD available: {SMTP_PASSWORD is not None}")
 
@@ -53,10 +53,10 @@ def send_email(recipient, subject, body, attachment_path=None):
         msg["To"] = recipient
         msg["Subject"] = subject
 
-        # Attach the email body
+     
         msg.attach(MIMEText(body, "plain"))
 
-        # Optionally attach a file if a valid path is provided
+       
         if attachment_path:
             with open(attachment_path, "rb") as attachment:
                 part = MIMEBase("application", "octet-stream")
@@ -65,7 +65,7 @@ def send_email(recipient, subject, body, attachment_path=None):
             part.add_header("Content-Disposition", f"attachment; filename={os.path.basename(attachment_path)}")
             msg.attach(part)
 
-        # Connect to Gmail SMTP and send the email
+       
         server = smtplib.SMTP(SMTP_HOST, SMTP_PORT)
         server.starttls()
         server.login(SMTP_USERNAME, SMTP_PASSWORD)

@@ -5,15 +5,15 @@ from langchain_mcp_adapters.client import MultiServerMCPClient
 from langgraph.prebuilt import create_react_agent
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-# Load environment variables from .env file
+
 load_dotenv()
 
-# Verify Google API key is present
+
 if not os.getenv("GOOGLE_API_KEY"):
     raise ValueError("GOOGLE_API_KEY environment variable not set. Please add it to your .env file.")
 
 async def main():
-    # Instantiate the Gemini chat model with explicit API key
+    
     model = ChatGoogleGenerativeAI(
         model="gemini-2.0-flash-001",
         temperature=0.7,
